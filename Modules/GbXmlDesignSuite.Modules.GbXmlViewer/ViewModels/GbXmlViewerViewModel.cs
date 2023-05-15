@@ -24,9 +24,10 @@ using Color4 = SharpDX.Color4;
 using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
-using GbXmlDesignSuite.Core.Constants;
+using GbXmlDesignSuite.Core;
 using Prism.Regions;
 using GbXmlDesignSuite.Core.Base;
+
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {

@@ -1,5 +1,5 @@
 ﻿using GbXmlDesignSuite.Core.Base;
-using GbXmlDesignSuite.Core.Constants;
+using GbXmlDesignSuite.Core;
 using Prism.Regions;
 
 
@@ -18,6 +18,11 @@ namespace GbXmlDesignSuite.Modules.VentCalc.ViewModels
         private void Navigate(string navigationPath)
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion, navigationPath);
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            //do something
         }
     }
 }

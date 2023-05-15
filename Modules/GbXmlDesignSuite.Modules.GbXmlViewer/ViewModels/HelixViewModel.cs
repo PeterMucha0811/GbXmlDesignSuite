@@ -25,7 +25,7 @@ using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
 using Prism.Mvvm;
 using GbXmlDesignSuite.Core.Base;
-using GbXmlDesignSuite.Core.Constants;
+using GbXmlDesignSuite.Core;
 using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels

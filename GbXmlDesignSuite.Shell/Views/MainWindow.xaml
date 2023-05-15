@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:GbXmlDesignSuite.Shell.Views"
         xmlns:local="clr-namespace:GbXmlDesignSuite.Shell"
+        xmlns:core="clr-namespace:GbXmlDesignSuite.Core;assembly=GbXmlDesignSuite.Core"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        xmlns:core="clr-namespace:GbXmlDesignSuite.Core.Constants;assembly=GbXmlDesignSuite.Core"
         mc:Ignorable="d"
         Height="800" Width="1000"
         AllowsTransparency="True"
@@ -43,13 +43,27 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ContentControl Grid.Row="0" Grid.RowSpan="2"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
-                            Margin="15" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-             <!--Add your properties bar here--> 
+            <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
+
+
+            <!--<ContentControl Grid.Row="0" Grid.RowSpan="2"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
+                            Margin="15" />-->
+
+            <!--<ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />-->
+
+
+            <!--<ContentControl Grid.Row="0" prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />-->
+
+
+            <!--Add your properties bar here--> 
             <!--<localViews:PropertiesBar Grid.Row="0"/>-->
 
-            <views:BottomMenuDockBar Grid.Row="1" VerticalContentAlignment="Bottom" />
+            <views:BottomMenuDockBar Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Bottom" />
         </Grid>
 
 

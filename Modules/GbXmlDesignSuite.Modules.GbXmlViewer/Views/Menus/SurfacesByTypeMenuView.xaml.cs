@@ -11,7 +11,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus
         public SurfacesByTypeMenuView()
         {
             InitializeComponent();
-            DataContext = new SurfacesByTypeMenuViewModel();
+            //DataContext = new SurfacesByTypeMenuViewModel();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
+﻿using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
 using GbXmlDesignSuite.Modules.AppSettings.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -17,7 +18,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate("ContentRegion", "AppSettingsView");
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "AppSettingsView");
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

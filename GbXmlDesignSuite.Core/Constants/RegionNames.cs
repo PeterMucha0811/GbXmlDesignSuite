@@ -1,12 +1,11 @@
-﻿namespace GbXmlDesignSuite.Core.Constants
+﻿namespace GbXmlDesignSuite.Core
 {
     public static class RegionNames
     {
-        public static string ContentRegion = "ContentRegion";
+        public const string ContentRegion = "ContentRegion";
 
-        //public static string LeftDockRegion = "LeftDockRegion";
-        //public static string RightDockRegion = "RightDockRegion";
-
-        //public static string BottomStatusBarRegion = "StatusBarRegion";
+        //    //public const string LeftDockRegion = "LeftDockRegion";
+        //    //public const string RightDockRegion = "RightDockRegion";
+        //    //public const string BottomStatusBarRegion = "StatusBarRegion";
     }
 }

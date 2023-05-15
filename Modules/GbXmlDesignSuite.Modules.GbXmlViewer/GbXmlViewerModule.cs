@@ -1,4 +1,5 @@
-﻿using GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels;
+﻿using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels;
 using GbXmlDesignSuite.Modules.GbXmlViewer.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -17,7 +18,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate("ContentRegion", "GbXmlViewerView");
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "GbXmlViewerView");
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

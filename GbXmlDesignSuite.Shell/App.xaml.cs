@@ -8,7 +8,6 @@ using GbXmlDesignSuite.Modules.VentCalc;
 using GbXmlDesignSuite.Shell.Views;
 using Prism.Ioc;
 using Prism.Modularity;
-using System.ComponentModel;
 using System.Windows;
 
 
@@ -23,23 +22,18 @@ namespace GbXmlDesignSuite.Shell
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register your services as singletons here
-
+            // //  Register services as singletons here  // //
             //containerRegistry.RegisterSingleton<IGbXmlViewerService, GbXmlViewerService>();
             //containerRegistry.RegisterSingleton<ILoadCalcService, LoadCalcService>();
             //containerRegistry.RegisterSingleton<IVentCalcService, VentCalcService>();
             //containerRegistry.RegisterSingleton<IProjectManagementService, ProjectManagementService>();
 
-            // Register your state services as singletons here
-
+            // //  Register state services as singletons here  // //
             //containerRegistry.RegisterSingleton<GbXmlViewerStateService>();
             //containerRegistry.RegisterSingleton<LoadCalcStateService>();
             //containerRegistry.RegisterSingleton<VentCalcStateService>();
             //containerRegistry.RegisterSingleton<AppSettingsStateService>();
             //containerRegistry.RegisterSingleton<ProjectMgmtStateService>();
-
-
-
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

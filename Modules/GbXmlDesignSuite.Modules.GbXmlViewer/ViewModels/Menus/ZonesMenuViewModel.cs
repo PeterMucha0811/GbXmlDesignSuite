@@ -1,16 +1,21 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GbXmlDesignSuite.Core.Base;
+using Prism.Regions;
+
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
-    public class ZonesMenuViewModel : BindableBase
+    public class ZonesMenuViewModel : RegionViewModelBase
     {
-        public ZonesMenuViewModel()
-        {
+        private readonly IRegionManager _regionManager;
 
+        public ZonesMenuViewModel(IRegionManager regionManager) : base(regionManager)
+        {
+            _regionManager = regionManager;           
+        }
+            
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            //do something
         }
     }
 }

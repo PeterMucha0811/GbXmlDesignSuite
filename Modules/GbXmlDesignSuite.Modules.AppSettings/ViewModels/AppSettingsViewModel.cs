@@ -1,5 +1,5 @@
-﻿using GbXmlDesignSuite.Core.Base;
-using GbXmlDesignSuite.Core.Constants;
+﻿using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Core.Base;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -19,9 +19,18 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
             _regionManager = regionManager;
         }
 
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            //do something
+        }
+
+
+
         private void Navigate(string navigationPath)
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion, navigationPath);
         }
+
     }
 }

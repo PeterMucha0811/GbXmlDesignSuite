@@ -1,4 +1,5 @@
-﻿using GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels;
+﻿using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels;
 using GbXmlDesignSuite.Modules.ProjectMgmt.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -20,7 +21,7 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate("ContentRegion", "ProjectMgmtView");
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "ProjectMgmtView");
 
         }
 

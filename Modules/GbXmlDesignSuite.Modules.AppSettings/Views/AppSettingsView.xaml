@@ -8,24 +8,65 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
 
-        <GroupBox Header="App Files Save Location"
+        <StackPanel>
+
+            <Grid>
+                <GroupBox Header="App Files Save Location"
                   Foreground="White"
                   BorderThickness=".75"
                   HorizontalAlignment="Left"
-                  Width="600" Height="70">
-            <StackPanel Margin="10" Orientation="Horizontal" >
+                  Width="600" Height="70"
+                  Grid.Column="1">
 
-                <Button Content="Browse"
+                    <StackPanel Margin="10" Orientation="Horizontal" >
+
+                        <Button Content="Browse"
                         Width="80" Height="25" Margin="0,0,8,0"
                         Style="{StaticResource ButtonStyle1}"
                         Command="{Binding BrowseToNewPathCommand}"/>
 
-                <TextBox Text="{Binding AppFilesSaveLocation, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                         Width="480" Height="25" >
-                </TextBox>
+                        <TextBox Text="{Binding AppFilesSaveLocation, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                         Width="480" Height="25"/>
 
-            </StackPanel>
-        </GroupBox>
+                    </StackPanel>
 
+                </GroupBox>
+            </Grid>
+
+
+            <Grid>
+
+            </Grid>
+
+
+            
+
+
+
+
+
+
+
+
+            <GroupBox Header="Personalization"
+                  Foreground="White"
+                  BorderThickness=".75"
+                  HorizontalAlignment="Left"
+                  Width="600" Height="70" Margin="0,20,0,0">
+
+
+                <StackPanel Margin="10" Orientation="Horizontal" >
+
+                </StackPanel>
+
+            </GroupBox>
+
+
+
+
+
+
+
+        </StackPanel>
     </Grid>
 </UserControl>
