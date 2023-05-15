@@ -71,13 +71,20 @@
       <Project>{5f87e912-34d7-41a5-90e4-80001fa0da54}</Project>
       <Name>GbXmlDesignSuite.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GbXmlDesignSuite.Modules.ProjectMgmt\GbXmlDesignSuite.Modules.ProjectMgmt.csproj">
+      <Project>{A3A83C08-FAE5-4BF1-ADF4-6BBFDDAC0C52}</Project>
+      <Name>GbXmlDesignSuite.Modules.ProjectMgmt</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Unity">
-      <Version>6.0.0</Version>
+      <Version>8.1.97</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf">
-      <Version>6.0.0</Version>
+      <Version>8.1.97</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,8 @@
-﻿using GbXmlDesignSuite.Modules.ProjectMgmt.Views;
-using Microsoft.Practices.Unity;
+﻿using GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels;
+using GbXmlDesignSuite.Modules.ProjectMgmt.Views;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-
 
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt
@@ -10,45 +10,26 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt
     public class ProjectMgmtModule : IModule
     {
         private readonly IRegionManager _regionManager;
+        private readonly IContainerProvider _containerProvider;
 
-        public ProjectMgmtModule(IUnityContainer container)
+        public ProjectMgmtModule(IRegionManager regionManager, IContainerProvider containerProvider)
         {
-            _regionManager = container.Resolve<IRegionManager>();
+            _regionManager = regionManager;
+            _containerProvider = containerProvider;
+        }
+
+        public void OnInitialized(IContainerProvider containerProvider)
+        {
+            _regionManager.RequestNavigate("ContentRegion", "ProjectMgmtView");
 
         }
 
-        public void Initialize()
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(ProjectMgmtView));
+            containerRegistry.RegisterForNavigation<ProjectMgmtView, ProjectMgmtViewModel>();
 
+            // // // PETER!! ADD THIS TO YOUR CODE // // //
+            //containerRegistry.RegisterDialogWindow<ProjectDialog>();
         }
-
-
-        // // // // FROM PRISM VERSION 7.2 // // // //
-
-        //private readonly IRegionManager _regionManager;
-        //private readonly IContainerProvider _containerProvider;
-
-
-        //public ProjectMgmtModule(IRegionManager regionManager, IContainerProvider containerProvider)
-        //{
-        //    _regionManager = regionManager;
-        //    _containerProvider = containerProvider;
-        //}
-
-        //public void OnInitialized(IContainerProvider containerProvider)
-        //{
-        //    _regionManager.RequestNavigate("ContentRegion", "ProjectMgmtView");
-
-
-        //}
-
-        //public void RegisterTypes(IContainerRegistry containerRegistry)
-        //{
-        //    containerRegistry.RegisterForNavigation<ProjectMgmtView, ProjectMgmtViewModel>();
-
-        //    // // // PETER!! ADD THIS TO YOUR CODE // // //
-        //    //containerRegistry.RegisterDialogWindow<ProjectDialog>();
-        //}
     }
 }

@@ -1,5 +1,6 @@
-﻿using GbXmlDesignSuite.Modules.AppSettings.Views;
-using Microsoft.Practices.Unity;
+﻿using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
+using GbXmlDesignSuite.Modules.AppSettings.Views;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -9,14 +10,19 @@ namespace GbXmlDesignSuite.Modules.AppSettings
     {
         private readonly IRegionManager _regionManager;
 
-        public AppSettingsModule(IUnityContainer container)
+        public AppSettingsModule(IRegionManager regionManager)
         {
-            _regionManager = container.Resolve<IRegionManager>();
+            _regionManager = regionManager;
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(AppSettingsView));
+            _regionManager.RequestNavigate("ContentRegion", "AppSettingsView");
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<AppSettingsView, AppSettingsViewModel>();
         }
     }
 }

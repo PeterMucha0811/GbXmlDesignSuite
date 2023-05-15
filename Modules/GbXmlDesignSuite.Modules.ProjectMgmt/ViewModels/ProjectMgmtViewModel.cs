@@ -3,10 +3,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using GbXmlDesignSuite.Core.Models;
 using Prism;
@@ -17,8 +14,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
     public class ProjectMgmtViewModel : BindableBase, IActiveAware
     {
-
-
 
 
         #region Fields

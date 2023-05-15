@@ -24,14 +24,24 @@ using Color4 = SharpDX.Color4;
 using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
+using GbXmlDesignSuite.Core.Constants;
+using Prism.Regions;
+using GbXmlDesignSuite.Core.Base;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
-    public class GbXmlViewerViewModel : BindableBase
+    public class GbXmlViewerViewModel : RegionViewModelBase
     {
+        private readonly IRegionManager _regionManager;
 
+        public GbXmlViewerViewModel(IRegionManager regionManager) : base(regionManager)
+        {
+            _regionManager = regionManager;
+        }
 
-
-
+        private void Navigate(string navigationPath)
+        {
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, navigationPath);
+        }
     }
 }

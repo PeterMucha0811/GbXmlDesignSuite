@@ -46,7 +46,7 @@
             <ContentControl Grid.Row="0" Grid.RowSpan="2"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
                             Margin="15" />
 
-            <!-- Add your properties bar here -->
+             <!--Add your properties bar here--> 
             <!--<localViews:PropertiesBar Grid.Row="0"/>-->
 
             <views:BottomMenuDockBar Grid.Row="1" VerticalContentAlignment="Bottom" />

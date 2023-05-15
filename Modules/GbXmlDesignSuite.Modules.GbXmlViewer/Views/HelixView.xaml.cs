@@ -12,10 +12,10 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.Views
         {
             InitializeComponent();
 
-  
 
-       
-            this.DataContext = new HelixViewModel();
+
+
+            //this.DataContext = new HelixViewModel();
 
 
         }

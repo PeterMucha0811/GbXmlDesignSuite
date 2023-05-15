@@ -1,5 +1,6 @@
-﻿using GbXmlDesignSuite.Modules.GbXmlViewer.Views;
-using Microsoft.Practices.Unity;
+﻿using GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels;
+using GbXmlDesignSuite.Modules.GbXmlViewer.Views;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -9,14 +10,19 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer
     {
         private readonly IRegionManager _regionManager;
 
-        public GbXmlViewerModule(IUnityContainer container)
+        public GbXmlViewerModule(IRegionManager regionManager)
         {
-            _regionManager = container.Resolve<IRegionManager>();
+            _regionManager = regionManager;
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(GbXmlViewerView));
+            _regionManager.RequestNavigate("ContentRegion", "GbXmlViewerView");
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<GbXmlViewerView, GbXmlViewerViewModel>();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using GbXmlDesignSuite.Modules.VentCalc.Views;
-using Microsoft.Practices.Unity;
+﻿using GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -9,14 +9,18 @@ namespace GbXmlDesignSuite.Modules.VentCalc
     {
         private readonly IRegionManager _regionManager;
 
-        public VentCalcModule(IUnityContainer container)
+        public VentCalcModule(IRegionManager regionManager)
         {
-            _regionManager = container.Resolve<IRegionManager>();
+            _regionManager = regionManager;
+        }
+        public void OnInitialized(IContainerProvider containerProvider)
+        {
+            _regionManager.RequestNavigate("ContentRegion", "VentCalcView");
         }
 
-        public void Initialize()
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(VentCalcView));
+            containerRegistry.RegisterForNavigation<VentCalcModule, ProjectMgmtViewModel>();
         }
     }
 }

@@ -4,5 +4,8 @@ namespace GbXmlDesignSuite.Shell.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        public MainWindowViewModel()
+        {
+        }
     }
 }
