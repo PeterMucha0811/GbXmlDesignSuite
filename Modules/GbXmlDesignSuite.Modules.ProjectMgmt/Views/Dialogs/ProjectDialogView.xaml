@@ -1,0 +1,103 @@
+﻿<Window x:Class="GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs.PrismWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"             
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Height="275" Width="200"
+        AllowsTransparency="True"
+        Background="Transparent"
+        BorderBrush="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        SnapsToDevicePixels="True">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+        <Border Grid.RowSpan="6" Grid.ColumnSpan="3" BorderThickness=".75"
+                    Background="{StaticResource highlightBoarderColor}" CornerRadius="15" BorderBrush="White">
+            <Border.Effect>
+                <DropShadowEffect
+                ShadowDepth="1"
+                Color="White"
+                BlurRadius="3" Direction="-500"/>
+            </Border.Effect>
+        </Border>
+
+        <!--First Name Fields-->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,10,0"
+                    Grid.Row="0" Grid.Column="0" >
+            <TextBlock Text="First Name" Foreground="{StaticResource menuTextColor}" Margin="5,0,0,0"/>
+
+            <TextBox x:Name="FirstNameTxB"
+                     Background="Transparent" Foreground="White" Height="25"
+                     VerticalContentAlignment="Center" Margin="0,2,0,0" Text="">
+            </TextBox>
+
+        </StackPanel>
+
+
+        <!--Last Name Fields-->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,10,0"
+                    Grid.Row="1" Grid.Column="0" Width="180">
+
+            <StackPanel Orientation="Vertical" Width="Auto">
+                <TextBlock Text="Last Name" Foreground="{StaticResource menuTextColor}" Margin="5,0,0,0"/>
+
+                <TextBox x:Name="LastNameTxB"
+                         Background="Transparent" Foreground="White"
+                         Width="145" Height="25" VerticalContentAlignment="Center" Margin="0,2,0,0" Text=""/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="25"  Margin="10,0,0,0">
+                <TextBlock Text="MI" Foreground="{StaticResource menuTextColor}" HorizontalAlignment="Center" />
+
+                <TextBox  x:Name="MITxB"
+                         Background="Transparent" Foreground="White"
+                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                         Height="25" Margin="0,2,0,0" Padding="0" Text=""/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <!--Department Fields-->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,10,0"
+                    Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Department" Foreground="{StaticResource menuTextColor}" Margin="5,0,0,0"/>
+
+            <TextBox x:Name="DepartTxB"
+                     Background="Transparent" Foreground="White" Height="25"
+                     VerticalContentAlignment="Center" Margin="0,2,0,0" Text=""/>
+        </StackPanel>
+
+        <!--Email Address Fields-->
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,10,0"
+                    Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Email Address" Foreground="{StaticResource menuTextColor}" Margin="5,0,0,0" SnapsToDevicePixels="True"/>
+            <TextBox x:Name="EmailTxB"
+                     Background="Transparent" Foreground="White" Height="25"
+                     VerticalContentAlignment="Center" Margin="0,2,0,0"
+                     SnapsToDevicePixels="True" Text="" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10,0,10,0"
+                    Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center">
+            <Button Click="SaveClick" Style="{StaticResource ButtonStyle1}"  Height="25" Width="65" Content="Save" Margin="0,0,5,0"/>
+            <Button Click="CancelClick" Style="{StaticResource ButtonStyle1}" Height="25" Width="65" Content="Cancel" Margin="5,0,0,0"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

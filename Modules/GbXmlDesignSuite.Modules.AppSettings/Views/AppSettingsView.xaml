@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="GbXmlDesignSuite.Modules.AppSettings.Views.AppSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GbXmlDesignSuite.Modules.AppSettings.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+
+        <GroupBox Header="App Files Save Location"
+                  Foreground="White"
+                  BorderThickness=".75"
+                  HorizontalAlignment="Left"
+                  Width="600" Height="70">
+            <StackPanel Margin="10" Orientation="Horizontal" >
+
+                <Button Content="Browse"
+                        Width="80" Height="25" Margin="0,0,8,0"
+                        Style="{StaticResource ButtonStyle1}"
+                        Command="{Binding BrowseToNewPathCommand}"/>
+
+                <TextBox Text="{Binding AppFilesSaveLocation, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                         Width="480" Height="25" >
+                </TextBox>
+
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

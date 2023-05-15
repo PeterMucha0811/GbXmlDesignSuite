@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="GbXmlDesignSuite.Shell.Views.BottomMenuDockBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:GbXmlDesignSuite.Shell.Views"
+             mc:Ignorable="d" 
+             Width="530">
+    <Grid VerticalAlignment="Bottom">
+
+        <Border Background="{StaticResource menuBackColor}"
+                CornerRadius="10, 10, 0, 0" Style="{StaticResource DockBarAnimationStyle}">
+
+            <Border.Effect>
+
+                <DropShadowEffect
+                ShadowDepth="1"
+                Color="#01cbff"
+                BlurRadius="10"
+                Direction="110"/>
+
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+
+
+
+
+                <!--// Home Button //-->
+                <Button Grid.Column="1"
+                        x:Name="home"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding NavigateCommand}" CommandParameter="ProjectMgmtView">
+
+                    
+                    
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/Dashboard.png" Stretch="Uniform"/>
+
+                       
+                        
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=home}"
+                           IsOpen="{Binding ElementName=home, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+                                <TextBlock Text="  Home  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// Import/Export gbXML Data Button //-->
+                <Button Grid.Column="2"
+                        x:Name="gbXmlImport"
+                        Style="{StaticResource DockBtnStyle}">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/ImportGbxml.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=gbXmlImport}"
+                           IsOpen="{Binding ElementName=gbXmlImport, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+                                <TextBlock Text="  Import and Export gbXML Data  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// gbXML Viewer Button //-->
+                <Button Grid.Column="3"
+                        x:Name="gbXmlViewer"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding NavigateCommand}" CommandParameter="GbXmlViewerView">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/gbXmlViewer.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=gbXmlViewer}"
+                           IsOpen="{Binding ElementName=gbXmlViewer, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}" >
+
+                                <TextBlock Text="  gbXML 3D Viewer  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// Ventilation Calculations Button //-->
+                <Button Grid.Column="4"
+                        x:Name="ventCalc"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding NavigateCommand}" CommandParameter="VentCalcView">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/VentilateCalc.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=ventCalc}"
+                           IsOpen="{Binding ElementName=ventCalc, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+
+                                <TextBlock Text="  Excel Ventilation Calculations  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// Carrier HAP Load Calculations Button //-->
+                <Button Grid.Column="5"
+                        x:Name="loadCalc"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding NavigateCommand}" CommandParameter="LoadCalcView">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/LoadCalc.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=loadCalc}"
+                           IsOpen="{Binding ElementName=loadCalc, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+                                <TextBlock Text="  Carrier HAP Load Calculations  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// Settings Button //-->
+                <Button Grid.Column="6"
+                        x:Name="settings"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding NavigateCommand}" CommandParameter="AppSettingsView">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/Settings.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=settings}"
+                           IsOpen="{Binding ElementName=settings, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+                                <TextBlock Text="  Settings  "
+                                           Style="{StaticResource PopupText}"/>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+
+
+                <!--// Close App Button //-->
+                <Button Grid.Column="7"
+                        x:Name="closeApp"
+                        Style="{StaticResource DockBtnStyle}"
+                        Command="{Binding ExitApplicationCommand}">
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/Exit.png" Stretch="Uniform"/>
+                    </Button.Background>
+
+                    <Popup HorizontalOffset="-5"
+                           PlacementTarget="{Binding ElementName=closeApp}"
+                           IsOpen="{Binding ElementName=closeApp, Path=IsMouseOver, Mode=OneWay}"
+                           Style="{StaticResource PopupStyle}">
+
+                        <Grid>
+                            <Border Style="{StaticResource boarder}">
+
+                                <StackPanel Orientation="Vertical">
+
+                                    <TextBlock Text="  Shutdown Application  "
+                                           Style="{StaticResource PopupText}"/>
+
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                </Button>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
