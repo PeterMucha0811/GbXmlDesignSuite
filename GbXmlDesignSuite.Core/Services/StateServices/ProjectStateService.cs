@@ -2,11 +2,11 @@
 
 namespace GbXmlDesignSuite.Core.Services
 {
-    public class ProjectMgmtStateService
+    public class ProjectStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public ProjectMgmtStateService()
+        public ProjectStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }

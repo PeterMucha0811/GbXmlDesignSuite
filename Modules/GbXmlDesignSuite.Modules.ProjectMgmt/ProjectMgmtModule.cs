@@ -5,32 +5,26 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-
 namespace GbXmlDesignSuite.Modules.ProjectMgmt
 {
     public class ProjectMgmtModule : IModule
     {
         private readonly IRegionManager _regionManager;
-        private readonly IContainerProvider _containerProvider;
 
-        public ProjectMgmtModule(IRegionManager regionManager, IContainerProvider containerProvider)
+        public ProjectMgmtModule(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            _containerProvider = containerProvider;
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
             _regionManager.RequestNavigate(RegionNames.ContentRegion, "ProjectMgmtView");
-
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<ProjectMgmtView, ProjectMgmtViewModel>();
-
-            // // // PETER!! ADD THIS TO YOUR CODE // // //
-            //containerRegistry.RegisterDialogWindow<ProjectDialog>();
         }
     }
 }
+

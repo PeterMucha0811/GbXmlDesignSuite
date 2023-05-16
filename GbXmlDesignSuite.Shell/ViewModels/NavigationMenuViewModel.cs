@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace GbXmlDesignSuite.Shell.ViewModels
 {
-    public class BottomMenuDockBarViewModel : BindableBase
+    public class NavigationMenuViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
 
@@ -19,13 +19,7 @@ namespace GbXmlDesignSuite.Shell.ViewModels
 
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
-        // This is the parameterless constructor for design-time data
-        public BottomMenuDockBarViewModel()
-        {
-            // You might want to add some dummy data here for the designer to display.
-        }
-
-        public BottomMenuDockBarViewModel(IRegionManager regionManager)
+        public NavigationMenuViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
             NavigateCommand = new DelegateCommand<string>(Navigate);

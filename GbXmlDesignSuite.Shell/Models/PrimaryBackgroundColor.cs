@@ -8,7 +8,7 @@ namespace GbXmlDesignSuite.Shell.Models
         private string _name;
 
         /// <summary>
-        /// Color Name
+        /// Color AccentColorName
         /// </summary>
         public string Name
         {

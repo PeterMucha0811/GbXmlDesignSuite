@@ -24,21 +24,16 @@ using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
 using Prism.Mvvm;
-using GbXmlDesignSuite.Core.Base;
 using GbXmlDesignSuite.Core;
 using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
-    public class HelixViewModel : RegionViewModelBase
+    public class HelixViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
 
-        private void Navigate(string navigationPath)
-        {
-            _regionManager.RequestNavigate(RegionNames.ContentRegion, navigationPath);
-        }
-    
+      
         public ObservableCollection<Element3D> SceneItems { get; } = new ObservableCollection<Element3D>();
 
         public string Title { get; set; }
@@ -78,7 +73,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
         }
 
 
-        public HelixViewModel(IRegionManager regionManager) : base(regionManager)
+        public HelixViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
 

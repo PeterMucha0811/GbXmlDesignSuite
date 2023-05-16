@@ -1,9 +1,9 @@
-﻿using GbXmlDesignSuite.Core.Base;
+﻿using Prism.Mvvm;
 using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
 {
-    public class AttributesMenuViewModel : RegionViewModelBase
+    public class AttributesMenuViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
 
@@ -46,7 +46,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
 
 
 
-        public AttributesMenuViewModel(IRegionManager regionManager) : base(regionManager)
+        public AttributesMenuViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
 
@@ -81,11 +81,6 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
             Materials = 45;
             Layers = 33;
             WindowTypes = 18;
-        }
-
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            //do something
         }
     }
 }

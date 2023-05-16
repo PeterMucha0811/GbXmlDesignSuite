@@ -1,12 +1,12 @@
-﻿using GbXmlDesignSuite.Core.Base;
+﻿using Prism.Mvvm;
 using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
 {
-    public class SurfacesByTypeMenuViewModel : RegionViewModelBase
+    public class SurfacesByTypeMenuViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
-        public SurfacesByTypeMenuViewModel(IRegionManager regionManager) : base(regionManager)
+        public SurfacesByTypeMenuViewModel(IRegionManager regionManager)
         {
             IsItemVisible = true;
             _regionManager = regionManager;
@@ -30,10 +30,6 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
             // You can use IsItemVisible property to determine whether to show or hide items.
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            //do something
-        }
     }
 }
 

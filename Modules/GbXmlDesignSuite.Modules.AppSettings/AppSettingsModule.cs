@@ -1,9 +1,9 @@
-﻿using GbXmlDesignSuite.Core;
-using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
-using GbXmlDesignSuite.Modules.AppSettings.Views;
+﻿using Prism.Modularity;
 using Prism.Ioc;
-using Prism.Modularity;
+using GbXmlDesignSuite.Modules.AppSettings.Views;
+using GbXmlDesignSuite.Core;
 using Prism.Regions;
+using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
 
 namespace GbXmlDesignSuite.Modules.AppSettings
 {

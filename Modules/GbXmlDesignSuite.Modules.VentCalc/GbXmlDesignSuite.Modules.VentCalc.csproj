@@ -77,6 +77,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro">
+      <Version>2.4.9</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Unity">
       <Version>8.1.97</Version>
     </PackageReference>

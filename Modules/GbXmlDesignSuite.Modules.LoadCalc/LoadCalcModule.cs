@@ -25,6 +25,5 @@ namespace GbXmlDesignSuite.Modules.LoadCalc
         {
             containerRegistry.RegisterForNavigation<LoadCalcView, LoadCalcViewModel>();
         }
-        
     }
 }
