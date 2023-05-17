@@ -1,5 +1,4 @@
-﻿using GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Base;
-using System.Linq;
+﻿using System.Linq;
 using System.IO;
 using System.Windows;
 using System.Collections.ObjectModel;
@@ -25,11 +24,16 @@ using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
 using Prism.Mvvm;
+using GbXmlDesignSuite.Core;
+using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
     public class HelixViewModel : BindableBase
     {
+        private readonly IRegionManager _regionManager;
+
+      
         public ObservableCollection<Element3D> SceneItems { get; } = new ObservableCollection<Element3D>();
 
         public string Title { get; set; }
@@ -69,8 +73,10 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
         }
 
 
-        public HelixViewModel()
+        public HelixViewModel(IRegionManager regionManager)
         {
+            _regionManager = regionManager;
+
             // --------------------------- Titles ---------------------------
             this.Title = "Lighting Demo";
             this.SubTitle = "WPF & SharpDX";

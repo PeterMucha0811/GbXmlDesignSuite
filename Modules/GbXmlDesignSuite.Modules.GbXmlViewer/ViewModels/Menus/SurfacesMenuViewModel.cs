@@ -1,16 +1,16 @@
-﻿using Prism.Commands;
+﻿using GbXmlDesignSuite.Core;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
     public class SurfacesMenuViewModel : BindableBase
     {
-        public SurfacesMenuViewModel()
-        {
+        private readonly IRegionManager _regionManager;
 
+        public SurfacesMenuViewModel(IRegionManager regionManager)
+        {
+            _regionManager = regionManager;
         }
     }
 }

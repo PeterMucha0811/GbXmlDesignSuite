@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using GbXmlDesignSuite.Core.Interfaces;
+using System.Collections.Generic;
 
 namespace GbXmlDesignSuite.Core.Services
 {
-    public class ProjectMgmtStateService
+    public class LoadCalcStateService : ILoadCalcStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public ProjectMgmtStateService()
+        public LoadCalcStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }

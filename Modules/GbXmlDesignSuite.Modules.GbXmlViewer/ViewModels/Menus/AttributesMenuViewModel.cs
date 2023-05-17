@@ -1,9 +1,12 @@
 ﻿using Prism.Mvvm;
+using Prism.Regions;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
 {
     public class AttributesMenuViewModel : BindableBase
     {
+        private readonly IRegionManager _regionManager;
+
         // Campus Attributes
         public string Xmlns { get; set; }
         public bool UseSIUnitsForResults { get; set; } = true;
@@ -40,8 +43,13 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus
         public int Layers { get; set; }
         public int WindowTypes { get; set; }
 
-        public AttributesMenuViewModel()
+
+
+
+        public AttributesMenuViewModel(IRegionManager regionManager)
         {
+            _regionManager = regionManager;
+
             Xmlns = "http://www.gbxml.org/schema";
             UseSIUnitsForResults = true;
             TemperatureUnit = "C";

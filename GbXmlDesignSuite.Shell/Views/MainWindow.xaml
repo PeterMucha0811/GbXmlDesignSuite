@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:GbXmlDesignSuite.Shell.Views"
         xmlns:local="clr-namespace:GbXmlDesignSuite.Shell"
+        xmlns:core="clr-namespace:GbXmlDesignSuite.Core;assembly=GbXmlDesignSuite.Core"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        xmlns:core="clr-namespace:GbXmlDesignSuite.Core.Constants;assembly=GbXmlDesignSuite.Core"
         mc:Ignorable="d"
-        Height="800" Width="1000"
+        Height="1000" Width="1500"
         AllowsTransparency="True"
         Background="Transparent"
         BorderBrush="Transparent"
@@ -17,24 +17,18 @@
         WindowStartupLocation="CenterScreen"
         SnapsToDevicePixels="True">
 
-    <Border Background="{StaticResource primaryBackColor}"
-            BorderBrush="Transparent"
-            CornerRadius="30"
-            MouseDown="Border_MouseDown"
-            MouseLeftButtonDown="Border_MouseLeftButtonDown"
-            Margin="5"
-            SnapsToDevicePixels="True" >
 
-        
-        
-        
+    <Border Background="{StaticResource primaryBackColor}" BorderBrush="Transparent" CornerRadius="30"
+            MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="5" SnapsToDevicePixels="True" >
 
         <Border.Effect>
             <DropShadowEffect
                 ShadowDepth="1"
-                Color="#01cbff"
-                BlurRadius="10" Direction="-500"/>
+                Color="White"
+                BlurRadius="5" Direction="-500"/>
         </Border.Effect>
+
+
 
 
         <Grid>
@@ -43,33 +37,67 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            
 
-            <StackPanel Orientation="Horizontal" >
-                <Image Width="50" Height="50"
-                       Source="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/Dashboard.png" />
+            <Border Grid.Row="1"
+                    Background="{StaticResource menuActiveTabColor}"
+                    BorderBrush="Transparent"
+                    CornerRadius="0,0,30,30">
+
+                <Border.Effect>
+                    <DropShadowEffect
+                        ShadowDepth="0.2"
+                        Color="White"
+                        BlurRadius="3"
+                        Direction="70"/>
+                </Border.Effect>
+
+                <!--// Bottom Status Bar //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.StatusBarRegion}"
+                             Margin="15" />
+
+                
 
 
-                <Image Width="50" Height="50"
-                       Source="pack://application:,,,/GbXmlDesignSuite.Shell;component/Resources/Images/Dashboard.png"
-                           RenderOptions.BitmapScalingMode="Fant"/>
-            </StackPanel>
+            </Border>
 
 
-            <ContentControl Grid.Row="0" Grid.RowSpan="2"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
-                            Margin="15" />
+            <StatusBar Grid.Row="1" Background="{x:Null}" Margin="20,0,0,0">
+                
+                <!--<StatusBarItem Background="Transparent" Foreground="White">Welcome to Green Building Design </StatusBarItem>-->
 
-            <!-- Add your properties bar here -->
-            <!--<localViews:PropertiesBar Grid.Row="0"/>-->
+                <!--<Separator/>-->
 
-            <views:BottomMenuDockBar Grid.Row="1" VerticalContentAlignment="Bottom" />
+                <StatusBarItem Content="{Binding StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                               Background="Transparent" Foreground="White" />
+            </StatusBar>
+            
+            
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!--// Main Content of Window //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
+                            Grid.Column="1" Margin="15" />
+
+
+                <!--// Left Dock Region //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.LeftDockRegion}"
+                            Grid.Column="0" />
+
+
+                <!--// Righ Dock Region //--><!--
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.RightDockRegion}"
+                            Grid.Column="3" />-->
+
+
+            </Grid>
         </Grid>
 
-
     </Border>
-    
 </Window>
-
-    
-    
-    
-    

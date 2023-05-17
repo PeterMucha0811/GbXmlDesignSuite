@@ -11,7 +11,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus
         public AttributesMenuView()
         {
             InitializeComponent();
-            DataContext = new AttributesMenuViewModel();
+            //DataContext = new AttributesMenuViewModel();
         }
     }
 }

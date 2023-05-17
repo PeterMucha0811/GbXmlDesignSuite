@@ -1,5 +1,7 @@
-﻿using GbXmlDesignSuite.Modules.LoadCalc.Views;
-using Microsoft.Practices.Unity;
+﻿using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Modules.LoadCalc.ViewModels;
+using GbXmlDesignSuite.Modules.LoadCalc.Views;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
@@ -9,14 +11,19 @@ namespace GbXmlDesignSuite.Modules.LoadCalc
     {
         private readonly IRegionManager _regionManager;
 
-        public LoadCalcModule(IUnityContainer container)
+        public LoadCalcModule(IRegionManager regionManager)
         {
-            _regionManager = container.Resolve<IRegionManager>();
+            _regionManager = regionManager;
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(LoadCalcView));
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "LoadCalcView");
+        }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<LoadCalcView, LoadCalcViewModel>();
         }
     }
 }

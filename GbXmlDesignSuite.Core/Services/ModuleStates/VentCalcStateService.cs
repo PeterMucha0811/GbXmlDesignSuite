@@ -1,19 +1,17 @@
-﻿using System;
+﻿using GbXmlDesignSuite.Core.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GbXmlDesignSuite.Core.Services
 {
-    public class LoadCalcStateService
+    public class VentCalcStateService : IVentCalcStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public LoadCalcStateService()
+        public VentCalcStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }
+
 
         public void SetModuleState(string moduleName, object state)
         {

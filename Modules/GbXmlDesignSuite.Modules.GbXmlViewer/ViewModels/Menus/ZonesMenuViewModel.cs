@@ -1,16 +1,17 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
+using Prism.Regions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
     public class ZonesMenuViewModel : BindableBase
     {
-        public ZonesMenuViewModel()
-        {
+        private readonly IRegionManager _regionManager;
 
+        public ZonesMenuViewModel(IRegionManager regionManager)
+        {
+            _regionManager = regionManager;           
         }
     }
 }

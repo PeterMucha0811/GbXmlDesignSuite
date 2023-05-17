@@ -3,41 +3,43 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using GbXmlDesignSuite.Core.Models;
-using Prism;
 using System.Windows.Media.Effects;
 using System.Windows;
+using GbXmlDesignSuite.Core.Interfaces;
+using Prism.Ioc;
+using Prism.Services.Dialogs;
+using Prism;
+using GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs;
+using GbXmlDesignSuite.Core.Events;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
     public class ProjectMgmtViewModel : BindableBase, IActiveAware
     {
-
-
-
-
-        #region Fields
+        private readonly IProjectStateService _projectStateService;
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
+        private IDialogService _dialogService;
+        private readonly IContainerProvider _containerProvider;
 
-        #endregion
-
-
-        #region Properties
-        public ProjectMgmtViewModel(IRegionManager regionManager,
-        IEventAggregator eventAggregator)
-
+        public ProjectMgmtViewModel(IProjectStateService projectStateService,
+            IRegionManager regionManager,
+            IEventAggregator eventAggregator,
+            IDialogService dialogService,
+            IContainerProvider containerProvider)
         {
+            _projectStateService = projectStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
+            _dialogService = dialogService;
+            _containerProvider = containerProvider;
 
 
             AddEmployeeCommand = new DelegateCommand(async () => await AddEmployeeAsync());
+
 
             // // TESTING ONLY // //
             if (Projects == null)
@@ -48,7 +50,12 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
             }
         }
 
-        #endregion
+
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Project Managment View");
+        }
 
 
         #region Commands
@@ -67,6 +74,7 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         public DelegateCommand UpdateGbXmlFileCommand =>
             new DelegateCommand(UpdateGbXmlFile);
 
+
         public DelegateCommand AddNewProjectCommand =>
             new DelegateCommand(AddNewProject);
 
@@ -75,17 +83,15 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         #endregion
 
 
-
-
-
-
         private async Task AddEmployeeAsync()
         {
+            var dialogService = _containerProvider.Resolve<IDialogService>();
+            var dialog = _containerProvider.Resolve<ProjectDialog>();
 
+            await ShowPopup(dialog);
 
             // Your logic after closing the dialog, if any
         }
-
 
         private Task ShowPopup<TPopup>(TPopup popup)
         where TPopup : Window
@@ -103,27 +109,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
             return task.Task;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -150,6 +135,8 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
         private void SetActiveProject(ProjectsModel project)
         {
+            
+            
             // Implement your logic for setting the active project
         }
 
@@ -168,7 +155,7 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
             if (SelectedProject != null)
             {
                 SelectedProject.IsEditable = !SelectedProject.IsEditable;
-
+                RaisePropertyChanged(nameof(SelectedProject.IsEditable));
             }
         }
 
@@ -180,8 +167,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         private void AddNewProject()
         {
             // Implement your logic for adding a new project
-
-
 
         }
 
@@ -209,14 +194,31 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         {
             IsActiveChanged?.Invoke(this, EventArgs.Empty);
 
+            if (IsActive)
+            {
+                // Update the Status Bar
+                UpdateStatusBarMethod();
+
+                // Load state when the module becomes active
+                var state = _projectStateService.GetModuleState("ProjectMgmt");
+                if (state != null)
+                {
+                    // Restore the state (e.g. Projects collection)
+                    Projects = state as ObservableCollection<ProjectsModel>;
+                }
+            }
+            else
+            {
+                // Save state when the module becomes inactive
+                _projectStateService.SetModuleState("ProjectMgmt", Projects);
+            }
         }
 
         // Update the state in the shared service when changes are made
         public void UpdateProjectState()
         {
-           
+            _projectStateService.SetModuleState("ProjectMgmt", Projects);
         }
-
 
         // // TESTING ONLY // //
         private void TestingData()
@@ -293,74 +295,5 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //private readonly IEventAggregator _eventAggregator;
-
-        //public DelegateCommand<ProjectsModel> SetActiveProjectCommand { get; private set; }
-
-
-
-        //private string _message;
-        //public string Message
-        //{
-        //    get { return _message; }
-        //    set { SetProperty(ref _message, value); }
-        //}
-
-        //private ObservableCollection<ProjectsModel> _projects;
-        //public ObservableCollection<ProjectsModel> Projects
-        //{
-        //    get { return _projects; }
-        //    set { SetProperty(ref _projects, value); }
-        //}
-
-        //public ProjectMgmtViewModel(IRegionManager regionManager, IEventAggregator eventAggregator) 
-        //{
-
-
-        //    _eventAggregator = eventAggregator;
-        //    SetActiveProjectCommand = new DelegateCommand<ProjectsModel>(SetActiveProject);
-
-
-        //    //do something
-        //    Projects = new ObservableCollection<ProjectsModel>();
-        //    Projects.Add(new ProjectsModel() { ProjectName = "Project1", ProjectNumber = "1" });
-        //    Projects.Add(new ProjectsModel() { ProjectName = "Project2", ProjectNumber = "2" });
-        //}
-
-
-
-        //private void SetActiveProject(ProjectsModel project)
-        //{
-
-        //    //_eventAggregator.GetEvent<Events>().Publish(project);
-        //}
-
-
-
     }
 }
