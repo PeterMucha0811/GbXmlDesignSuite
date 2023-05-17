@@ -91,9 +91,9 @@
                             Grid.Column="0" />
 
 
-                <!--// Righ Dock Region //--><!--
+                <!--// Right Dock Region //-->
                 <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.RightDockRegion}"
-                            Grid.Column="3" />-->
+                            Grid.Column="3" />
 
 
             </Grid>
