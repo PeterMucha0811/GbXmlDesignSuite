@@ -1,6 +1,7 @@
 ﻿using GbXmlDesignSuite.Core;
 using GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels;
 using GbXmlDesignSuite.Modules.ProjectMgmt.Views;
+using GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -24,6 +25,8 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<ProjectMgmtView, ProjectMgmtViewModel>();
+
+            //containerRegistry.RegisterDialog<ProjectDialog, ProjectDialogViewModel>();
         }
     }
 }

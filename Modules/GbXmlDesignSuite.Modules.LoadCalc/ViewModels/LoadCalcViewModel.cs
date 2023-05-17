@@ -10,6 +10,7 @@ using System;
 using GbXmlDesignSuite.Core.Interfaces;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
+using GbXmlDesignSuite.Core.Events;
 
 namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
 {
@@ -17,7 +18,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
     {
         private readonly ILoadCalcStateService _loadCalcStateService;
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
@@ -34,6 +35,11 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
             _containerProvider = containerProvider;
         }
 
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Load Calculations View");
+        }
 
         private ObservableCollection<ProjectsModel> _projects;
         public ObservableCollection<ProjectsModel> Projects
@@ -62,13 +68,15 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
 
             if (IsActive)
             {
+                // Update the Status Bar
+                UpdateStatusBarMethod();
+
                 // Load state when the module becomes active
                 var state = _loadCalcStateService.GetModuleState("LoadCalc");
                 if (state != null)
                 {
                     // Restore the state (e.g. Projects collection)
                     Projects = state as ObservableCollection<ProjectsModel>;
-
                 }
             }
             else

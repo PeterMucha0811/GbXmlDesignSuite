@@ -72,7 +72,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
         //            var appTheme = ThemeManager.GetAppTheme(value.Name);
         //            ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, appTheme);
 
-        //            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Theme changed to {0}", value.Name));
+        //            EventAggregator.GetEvent<StatusBarUpdateEvent>().Publish(String.Format("Theme changed to {0}", value.Name));
         //        }
         //    }
         //}
@@ -90,7 +90,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
         //            var accent = ThemeManager.GetAccent(value.AccentColorName);
         //            ThemeManager.ChangeAppStyle(Application.Current, accent, theme.Item1);
 
-        //            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(String.Format("Accent color changed to {0}", value.AccentColorName));
+        //            EventAggregator.GetEvent<StatusBarUpdateEvent>().Publish(String.Format("Accent color changed to {0}", value.AccentColorName));
         //        }
         //    }
         //}

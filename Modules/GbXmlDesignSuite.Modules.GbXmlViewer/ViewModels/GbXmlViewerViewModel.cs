@@ -32,8 +32,7 @@ using Color4 = SharpDX.Color4;
 using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
-
-
+using GbXmlDesignSuite.Core.Events;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
@@ -41,7 +40,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
     {
         private readonly IGbXmlViewerStateService _gbXmlViewerStateService;
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
@@ -56,9 +55,15 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
+
         }
 
-
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("gbXML 3D Viewer View");
+        }
+        
         private ObservableCollection<ProjectsModel> _projects;
         public ObservableCollection<ProjectsModel> Projects
         {
@@ -85,13 +90,15 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 
             if (IsActive)
             {
+                // Update the Status Bar
+                UpdateStatusBarMethod();
+
                 // Load state when the module becomes active
                 var state = _gbXmlViewerStateService.GetModuleState("GbXmlViewer");
                 if (state != null)
                 {
                     // Restore the state (e.g. Projects collection)
                     Projects = state as ObservableCollection<ProjectsModel>;
-
                 }
             }
             else

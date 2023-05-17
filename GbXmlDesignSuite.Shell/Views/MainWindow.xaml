@@ -37,7 +37,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-
+            
 
             <Border Grid.Row="1"
                     Background="{StaticResource menuActiveTabColor}"
@@ -46,18 +46,33 @@
 
                 <Border.Effect>
                     <DropShadowEffect
-                ShadowDepth="0.2"
-                Color="White"
-                BlurRadius="3"
-                Direction="70"/>
+                        ShadowDepth="0.2"
+                        Color="White"
+                        BlurRadius="3"
+                        Direction="70"/>
                 </Border.Effect>
 
                 <!--// Bottom Status Bar //-->
                 <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.StatusBarRegion}"
                              Margin="15" />
 
+                
+
+
             </Border>
 
+
+            <StatusBar Grid.Row="1" Background="{x:Null}" Margin="20,0,0,0">
+                
+                <!--<StatusBarItem Background="Transparent" Foreground="White">Welcome to Green Building Design </StatusBarItem>-->
+
+                <!--<Separator/>-->
+
+                <StatusBarItem Content="{Binding StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                               Background="Transparent" Foreground="White" />
+            </StatusBar>
+            
+            
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>

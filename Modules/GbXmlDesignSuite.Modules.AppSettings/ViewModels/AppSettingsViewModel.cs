@@ -9,6 +9,7 @@ using System;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
 using GbXmlDesignSuite.Core.Interfaces;
+using GbXmlDesignSuite.Core.Events;
 
 namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
 {
@@ -16,7 +17,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
     {
         private readonly IAppSettingsStateService _appSettingsStateService;
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
@@ -31,6 +32,12 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
+        }
+
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("App Settings View");
         }
 
 
@@ -60,13 +67,15 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
 
             if (IsActive)
             {
+                // Update the Status Bar
+                UpdateStatusBarMethod();
+
                 // Load state when the module becomes active
                 var state = _appSettingsStateService.GetModuleState("AppSettings");
                 if (state != null)
                 {
                     // Restore the state (e.g. Projects collection)
                     Projects = state as ObservableCollection<ProjectsModel>;
-
                 }
             }
             else

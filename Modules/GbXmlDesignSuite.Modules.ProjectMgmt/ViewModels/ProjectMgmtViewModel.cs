@@ -13,6 +13,7 @@ using Prism.Ioc;
 using Prism.Services.Dialogs;
 using Prism;
 using GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs;
+using GbXmlDesignSuite.Core.Events;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
@@ -20,7 +21,7 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
     {
         private readonly IProjectStateService _projectStateService;
         private readonly IRegionManager _regionManager;
-        private readonly IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
@@ -50,7 +51,11 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         }
 
 
-
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Project Managment View");
+        }
 
 
         #region Commands
@@ -68,6 +73,7 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
         public DelegateCommand UpdateGbXmlFileCommand =>
             new DelegateCommand(UpdateGbXmlFile);
+
 
         public DelegateCommand AddNewProjectCommand =>
             new DelegateCommand(AddNewProject);
@@ -129,6 +135,8 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
         private void SetActiveProject(ProjectsModel project)
         {
+            
+            
             // Implement your logic for setting the active project
         }
 
@@ -188,6 +196,9 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
             if (IsActive)
             {
+                // Update the Status Bar
+                UpdateStatusBarMethod();
+
                 // Load state when the module becomes active
                 var state = _projectStateService.GetModuleState("ProjectMgmt");
                 if (state != null)

@@ -64,7 +64,7 @@
     <Compile Include="Constants\RegionNames.cs" />
     <Compile Include="Constants\ServiceNames.cs" />
     <Compile Include="Events\AppProjectChangedEvent.cs" />
-    <Compile Include="Events\StatusBarMessageUpdateEvent.cs" />
+    <Compile Include="Events\StatusBarUpdateEvent.cs" />
     <Compile Include="Interfaces\ModuleStates\IAppSettingsStateService.cs" />
     <Compile Include="Interfaces\ModuleStates\IGbXmlViewerStateService.cs" />
     <Compile Include="Interfaces\ModuleStates\ILoadCalcStateService.cs" />

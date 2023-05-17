@@ -1,9 +1,11 @@
 ﻿using Prism.Mvvm;
+using Prism.Services.Dialogs;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
     public class ProjectDialogViewModel : BindableBase
     {
+        
         private string _firstName;
         private string _lastName;
         private string _mi;
