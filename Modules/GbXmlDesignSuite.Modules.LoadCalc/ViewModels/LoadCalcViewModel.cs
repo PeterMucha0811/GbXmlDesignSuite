@@ -7,22 +7,31 @@ using Prism.Events;
 using Prism;
 using System.Collections.ObjectModel;
 using System;
+using GbXmlDesignSuite.Core.Interfaces;
+using Prism.Ioc;
+using Prism.Services.Dialogs;
 
 namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
 {
     public class LoadCalcViewModel : BindableBase, IActiveAware
     {
+        private readonly ILoadCalcStateService _loadCalcStateService;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
-        private readonly ProjectStateService _projectStateService;
+        private IDialogService _dialogService;
+        private readonly IContainerProvider _containerProvider;
 
-        public LoadCalcViewModel(IRegionManager regionManager,
-        IEventAggregator eventAggregator,
-        ProjectStateService projectStateService)
+        public LoadCalcViewModel(ILoadCalcStateService loadCalcStateService,
+            IRegionManager regionManager,
+            IEventAggregator eventAggregator,
+            IDialogService dialogService,
+            IContainerProvider containerProvider)
         {
+            _loadCalcStateService = loadCalcStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
-            _projectStateService = projectStateService;
+            _dialogService = dialogService;
+            _containerProvider = containerProvider;
         }
 
 
@@ -54,7 +63,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
             if (IsActive)
             {
                 // Load state when the module becomes active
-                var state = _projectStateService.GetModuleState("LoadCalc");
+                var state = _loadCalcStateService.GetModuleState("LoadCalc");
                 if (state != null)
                 {
                     // Restore the state (e.g. Projects collection)
@@ -65,7 +74,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
             else
             {
                 // Save state when the module becomes inactive
-                _projectStateService.SetModuleState("LoadCalc", Projects);
+                _loadCalcStateService.SetModuleState("LoadCalc", Projects);
             }
         }
 
@@ -73,7 +82,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
         // Update the state in the shared service when changes are made
         public void UpdateProjectState()
         {
-            _projectStateService.SetModuleState("LoadCalc", Projects);
+            _loadCalcStateService.SetModuleState("LoadCalc", Projects);
         }
     }
 }

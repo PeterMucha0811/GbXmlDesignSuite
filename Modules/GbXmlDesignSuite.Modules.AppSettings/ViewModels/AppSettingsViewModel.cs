@@ -6,22 +6,31 @@ using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using Prism.Regions;
 using System;
+using Prism.Ioc;
+using Prism.Services.Dialogs;
+using GbXmlDesignSuite.Core.Interfaces;
 
 namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
 {
     public class AppSettingsViewModel : BindableBase, IActiveAware
     {
+        private readonly IAppSettingsStateService _appSettingsStateService;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
-        private readonly ProjectStateService _projectStateService;
+        private IDialogService _dialogService;
+        private readonly IContainerProvider _containerProvider;
 
-        public AppSettingsViewModel(IRegionManager regionManager,
-        IEventAggregator eventAggregator,
-        ProjectStateService projectStateService)
+        public AppSettingsViewModel(IAppSettingsStateService appSettingsStateService,
+            IRegionManager regionManager,
+            IEventAggregator eventAggregator,
+            IDialogService dialogService,
+            IContainerProvider containerProvider)
         {
+            _appSettingsStateService = appSettingsStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
-            _projectStateService = projectStateService;
+            _dialogService = dialogService;
+            _containerProvider = containerProvider;
         }
 
 
@@ -52,7 +61,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
             if (IsActive)
             {
                 // Load state when the module becomes active
-                var state = _projectStateService.GetModuleState("AppSettings");
+                var state = _appSettingsStateService.GetModuleState("AppSettings");
                 if (state != null)
                 {
                     // Restore the state (e.g. Projects collection)
@@ -63,7 +72,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
             else
             {
                 // Save state when the module becomes inactive
-                _projectStateService.SetModuleState("AppSettings", Projects);
+                _appSettingsStateService.SetModuleState("AppSettings", Projects);
             }
         }
 
@@ -71,7 +80,7 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
         // Update the state in the shared service when changes are made
         public void UpdateProjectState()
         {
-            _projectStateService.SetModuleState("AppSettings", Projects);
+            _appSettingsStateService.SetModuleState("AppSettings", Projects);
         }
     }
 }

@@ -9,7 +9,6 @@ using GbXmlDesignSuite.Core.Models;
 using System.Windows.Media.Effects;
 using System.Windows;
 using GbXmlDesignSuite.Core.Interfaces;
-using GbXmlDesignSuite.Core.Services;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
 using Prism;
@@ -19,29 +18,27 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
     public class ProjectMgmtViewModel : BindableBase, IActiveAware
     {
-        #region Fields
+        private readonly IProjectStateService _projectStateService;
         private readonly IRegionManager _regionManager;
         private readonly IEventAggregator _eventAggregator;
-        private readonly ProjectStateService _projectStateService;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
-        #endregion
 
-
-        #region Properties
-        public ProjectMgmtViewModel(IRegionManager regionManager,
-        IEventAggregator eventAggregator,
-        ProjectStateService projectStateService,
-        IDialogService dialogService,
-        IContainerProvider containerProvider)
+        public ProjectMgmtViewModel(IProjectStateService projectStateService,
+            IRegionManager regionManager,
+            IEventAggregator eventAggregator,
+            IDialogService dialogService,
+            IContainerProvider containerProvider)
         {
+            _projectStateService = projectStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
-            _projectStateService = projectStateService;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
 
+
             AddEmployeeCommand = new DelegateCommand(async () => await AddEmployeeAsync());
+
 
             // // TESTING ONLY // //
             if (Projects == null)
@@ -52,7 +49,8 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
             }
         }
 
-        #endregion
+
+
 
 
         #region Commands
@@ -79,10 +77,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         #endregion
 
 
-
-
-
-
         private async Task AddEmployeeAsync()
         {
             var dialogService = _containerProvider.Resolve<IDialogService>();
@@ -92,7 +86,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
             // Your logic after closing the dialog, if any
         }
-
 
         private Task ShowPopup<TPopup>(TPopup popup)
         where TPopup : Window
@@ -110,27 +103,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
             return task.Task;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -188,8 +160,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         {
             // Implement your logic for adding a new project
 
-
-
         }
 
         private ObservableCollection<ProjectsModel> _projects;
@@ -238,7 +208,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
         {
             _projectStateService.SetModuleState("ProjectMgmt", Projects);
         }
-
 
         // // TESTING ONLY // //
         private void TestingData()

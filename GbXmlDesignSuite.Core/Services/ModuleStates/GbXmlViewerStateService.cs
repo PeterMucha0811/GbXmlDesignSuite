@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using GbXmlDesignSuite.Core.Interfaces;
+using System.Collections.Generic;
 
 namespace GbXmlDesignSuite.Core.Services
 {
-    public class VentCalcStateService
+    public class GbXmlViewerStateService : IGbXmlViewerStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public VentCalcStateService()
+        public GbXmlViewerStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }
-
 
         public void SetModuleState(string moduleName, object state)
         {

@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using GbXmlDesignSuite.Core.Interfaces;
+using System.Collections.Generic;
 
 namespace GbXmlDesignSuite.Core.Services
 {
-    public class ProjectStateService
+    public class AppSettingsStateService : IAppSettingsStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public ProjectStateService()
+        public AppSettingsStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }

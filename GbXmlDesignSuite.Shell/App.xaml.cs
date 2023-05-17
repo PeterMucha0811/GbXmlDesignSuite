@@ -24,23 +24,12 @@ namespace GbXmlDesignSuite.Shell
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // //  Register services as singletons here  // //
-            containerRegistry.RegisterSingleton<IGbXmlViewerService, GbXmlViewerService>();
-            containerRegistry.RegisterSingleton<ILoadCalcService, LoadCalcService>();
-            containerRegistry.RegisterSingleton<IVentCalcService, VentCalcService>();
-            containerRegistry.RegisterSingleton<IAppSettingsService, AppSettingsService>();
-            containerRegistry.RegisterSingleton<IProjectMgmtService, ProjectMgmtService>();
-
-
-            // //  Register state services as singletons here  // //
-            containerRegistry.RegisterSingleton<GbXmlViewerStateService>();
-            containerRegistry.RegisterSingleton<LoadCalcStateService>();
-            containerRegistry.RegisterSingleton<VentCalcStateService>();
-            containerRegistry.RegisterSingleton<AppSettingsStateService>();
-            containerRegistry.RegisterSingleton<ProjectStateService>();
-
-
-            //containerRegistry.RegisterForNavigation<NavigationMenu>();
+            // //  Register State Services as Singletons  // //
+            containerRegistry.RegisterSingleton<IGbXmlViewerStateService, GbXmlViewerStateService>();
+            containerRegistry.RegisterSingleton<ILoadCalcStateService, LoadCalcStateService>();
+            containerRegistry.RegisterSingleton<IVentCalcStateService, VentCalcStateService>();
+            containerRegistry.RegisterSingleton<IAppSettingsStateService, AppSettingsStateService>();
+            containerRegistry.RegisterSingleton<IProjectStateService, ProjectStateService>();
 
         }
 
