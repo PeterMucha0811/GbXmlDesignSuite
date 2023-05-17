@@ -7,9 +7,9 @@
         xmlns:local="clr-namespace:GbXmlDesignSuite.Shell"
         xmlns:core="clr-namespace:GbXmlDesignSuite.Core;assembly=GbXmlDesignSuite.Core"
         xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="False"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
-       Height="700" Width="900"
+        Height="1000" Width="1500"
         AllowsTransparency="True"
         Background="Transparent"
         BorderBrush="Transparent"
@@ -24,9 +24,11 @@
         <Border.Effect>
             <DropShadowEffect
                 ShadowDepth="1"
-                Color="#01cbff"
-                BlurRadius="10" Direction="-500"/>
+                Color="White"
+                BlurRadius="5" Direction="-500"/>
         </Border.Effect>
+
+
 
 
         <Grid>
@@ -35,26 +37,52 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ContentControl Grid.Row="0" Grid.RowSpan="2"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
-                            Margin="15" />
 
-            <!-- Add your properties bar here -->
-            <!--<localViews:PropertiesBar Grid.Row="0"/>-->
 
-            <views:BottomMenuDockBar Grid.Row="1" VerticalContentAlignment="Bottom" />
+            <Border Grid.Row="1"
+                    Background="{StaticResource menuActiveTabColor}"
+                    BorderBrush="Transparent"
+                    CornerRadius="0,0,30,30">
+
+                <Border.Effect>
+                    <DropShadowEffect
+                ShadowDepth="0.2"
+                Color="White"
+                BlurRadius="3"
+                Direction="70"/>
+                </Border.Effect>
+
+                <!--// Bottom Status Bar //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.StatusBarRegion}"
+                             Margin="15" />
+
+            </Border>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!--// Main Content of Window //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"
+                            Grid.Column="1" Margin="15" />
+
+
+                <!--// Left Dock Region //-->
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.LeftDockRegion}"
+                            Grid.Column="0" />
+
+
+                <!--// Righ Dock Region //--><!--
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.RightDockRegion}"
+                            Grid.Column="3" />-->
+
+
+            </Grid>
         </Grid>
 
     </Border>
-
-
-
-
-
-
-
 </Window>
-
-    
-    
-    
-    

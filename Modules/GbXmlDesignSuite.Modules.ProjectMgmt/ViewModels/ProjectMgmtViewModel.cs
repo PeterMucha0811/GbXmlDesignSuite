@@ -13,6 +13,7 @@ using GbXmlDesignSuite.Core.Services;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
 using Prism;
+using GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
@@ -84,10 +85,10 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
         private async Task AddEmployeeAsync()
         {
-            //var dialogService = _containerProvider.Resolve<IDialogService>();
-            //var dialog = _containerProvider.Resolve<ProjectDialog>();
+            var dialogService = _containerProvider.Resolve<IDialogService>();
+            var dialog = _containerProvider.Resolve<ProjectDialog>();
 
-            //await ShowPopup(dialog);
+            await ShowPopup(dialog);
 
             // Your logic after closing the dialog, if any
         }

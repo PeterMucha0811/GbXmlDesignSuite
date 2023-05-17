@@ -1,6 +1,9 @@
-﻿using Prism.Regions;
+﻿using System.Windows.Controls;
+using System.Windows.Media;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Threading.Tasks;
 
 namespace GbXmlDesignSuite.Shell.Views
 {
@@ -9,9 +12,13 @@ namespace GbXmlDesignSuite.Shell.Views
         public MainWindow()
         {
             InitializeComponent();
+
             _defaultWindowSize = this.Width;
         }
 
+
+
+        #region Maximized, Minimize & Collapse Window Options
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -19,7 +26,6 @@ namespace GbXmlDesignSuite.Shell.Views
                 this.DragMove();
             }
         }
-
         private bool IsMaximized = false;
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -42,7 +48,6 @@ namespace GbXmlDesignSuite.Shell.Views
             }
         }
 
-
         private double _defaultWindowSize;
         private bool _isCollapsed = false;
         private void CollapseWindow(object sender, RoutedEventArgs e)
@@ -58,9 +63,6 @@ namespace GbXmlDesignSuite.Shell.Views
                 _isCollapsed = false;
             }
         }
+        #endregion
     }
 }
-
-
-
-

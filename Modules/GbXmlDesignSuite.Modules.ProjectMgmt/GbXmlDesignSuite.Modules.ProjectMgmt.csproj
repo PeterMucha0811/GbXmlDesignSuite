@@ -54,15 +54,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Dialogs\ProjectDialogViewModel.cs" />
     <Compile Include="ViewModels\ProjectMgmtViewModel.cs" />
-    <Compile Include="Views\Dialogs\ProjectDialogView.xaml.cs">
-      <DependentUpon>ProjectDialogView.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\ProjectDialog.xaml.cs">
+      <DependentUpon>ProjectDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProjectMgmtView.xaml.cs">
       <DependentUpon>ProjectMgmtView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\Dialogs\ProjectDialogView.xaml">
+    <Page Include="Views\Dialogs\ProjectDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

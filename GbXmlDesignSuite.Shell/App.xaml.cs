@@ -8,9 +8,10 @@ using GbXmlDesignSuite.Modules.VentCalc;
 using GbXmlDesignSuite.Shell.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Regions;
 using Prism.Unity;
 using System.Windows;
-
+using GbXmlDesignSuite.Core;
 
 namespace GbXmlDesignSuite.Shell
 {
@@ -31,12 +32,16 @@ namespace GbXmlDesignSuite.Shell
             containerRegistry.RegisterSingleton<IProjectMgmtService, ProjectMgmtService>();
 
 
-            //// //  Register state services as singletons here  // //
+            // //  Register state services as singletons here  // //
             containerRegistry.RegisterSingleton<GbXmlViewerStateService>();
             containerRegistry.RegisterSingleton<LoadCalcStateService>();
             containerRegistry.RegisterSingleton<VentCalcStateService>();
             containerRegistry.RegisterSingleton<AppSettingsStateService>();
             containerRegistry.RegisterSingleton<ProjectStateService>();
+
+
+            //containerRegistry.RegisterForNavigation<NavigationMenu>();
+
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -48,5 +53,14 @@ namespace GbXmlDesignSuite.Shell
             moduleCatalog.AddModule<ProjectMgmtModule>();
         }
 
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            var regionManager = this.Container.Resolve<IRegionManager>();
+            if (regionManager != null)
+            {
+                regionManager.RegisterViewWithRegion(RegionNames.LeftDockRegion, typeof(NavigationMenu));
+            }
+        }
     }
 }

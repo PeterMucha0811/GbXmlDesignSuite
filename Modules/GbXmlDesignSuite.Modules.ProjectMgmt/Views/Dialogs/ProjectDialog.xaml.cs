@@ -1,14 +1,13 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for PrismWindow1.xaml
+    /// Interaction logic for ProjectDialog.xaml
     /// </summary>
-    public partial class PrismWindow1 : Window
+    public partial class ProjectDialog : Window
     {
-        public PrismWindow1()
+        public ProjectDialog()
         {
             InitializeComponent();
         }

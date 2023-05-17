@@ -16,7 +16,6 @@ namespace GbXmlDesignSuite.Shell.ViewModels
             System.Windows.Application.Current.Shutdown();
         }
 
-
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
         public NavigationMenuViewModel(IRegionManager regionManager)
