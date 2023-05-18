@@ -1,5 +1,4 @@
 ﻿using Prism.Mvvm;
-using Prism.Services.Dialogs;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {

@@ -1,32 +1,30 @@
-﻿using GbXmlDesignSuite.Core.Models;
-using Prism.Events;
-using Prism.Mvvm;
-using System.Collections.ObjectModel;
-using Prism.Regions;
-using System;
-using Prism.Ioc;
-using Prism.Services.Dialogs;
-using GbXmlDesignSuite.Core.Events;
+﻿using GbXmlDesignSuite.Core.Events;
+using GbXmlDesignSuite.Core.Models;
 using GbXmlDesignSuite.Services;
+using Prism;
+using Prism.Events;
+using Prism.Ioc;
+using Prism.Mvvm;
+using Prism.Regions;
+using Prism.Services.Dialogs;
+using System;
+using System.Collections.ObjectModel;
 
-namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
+namespace GbXmlDesignSuite.Modules.AppHome.ViewModels
 {
-    public class AppSettingsViewModel : BindableBase
+    public class AppHomeViewModel : BindableBase, IActiveAware
     {
-        private readonly IAppSettingsStateService _appSettingsStateService;
         private readonly IRegionManager _regionManager;
         private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
-        public AppSettingsViewModel(IAppSettingsStateService appSettingsStateService,
-            IProjectsService projectsService,
+        public AppHomeViewModel(IProjectsService projectsService,
             IRegionManager regionManager,
             IEventAggregator eventAggregator,
             IDialogService dialogService,
             IContainerProvider containerProvider)
         {
-            _appSettingsStateService = appSettingsStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
@@ -42,12 +40,12 @@ namespace GbXmlDesignSuite.Modules.AppSettings.ViewModels
             set { SetProperty(ref _projects, value); }
         }
 
-
-        // Method: Update Status Bar
+        // Update the Status Bar Method
         private void UpdateStatusBarMethod()
         {
-            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("App Settings View");
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Application Home View");
         }
+
 
         private bool _isActive;
         public bool IsActive

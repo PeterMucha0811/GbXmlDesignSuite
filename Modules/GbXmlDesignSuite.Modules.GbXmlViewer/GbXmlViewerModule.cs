@@ -1,6 +1,7 @@
 ﻿using GbXmlDesignSuite.Core;
 using GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels;
 using GbXmlDesignSuite.Modules.GbXmlViewer.Views;
+using GbXmlDesignSuite.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -24,6 +25,9 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<GbXmlViewerView, GbXmlViewerViewModel>();
+
+            // Register Services
+            containerRegistry.Register<IProjectsService, ProjectsService>();
         }
     }
 }

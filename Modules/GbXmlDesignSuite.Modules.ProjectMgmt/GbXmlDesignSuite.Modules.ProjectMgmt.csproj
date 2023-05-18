@@ -79,6 +79,10 @@
       <Project>{5f87e912-34d7-41a5-90e4-80001fa0da54}</Project>
       <Name>GbXmlDesignSuite.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GbXmlDesignSuite.Services\GbXmlDesignSuite.Services.csproj">
+      <Project>{A5779BBF-2098-4C70-96ED-2CE2786839B6}</Project>
+      <Name>GbXmlDesignSuite.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MahApps.Metro">

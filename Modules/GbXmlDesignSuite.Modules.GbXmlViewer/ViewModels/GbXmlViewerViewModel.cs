@@ -1,6 +1,4 @@
 ﻿using GbXmlDesignSuite.Core.Models;
-using GbXmlDesignSuite.Core.Services;
-using GbXmlDesignSuite.Core.Interfaces;
 
 using Prism;
 using Prism.Services.Dialogs;
@@ -33,6 +31,7 @@ using Camera = HelixToolkit.Wpf.SharpDX.Camera;
 using PerspectiveCamera = HelixToolkit.Wpf.SharpDX.PerspectiveCamera;
 using ProjectionCamera = HelixToolkit.Wpf.SharpDX.ProjectionCamera;
 using GbXmlDesignSuite.Core.Events;
+using GbXmlDesignSuite.Services;
 
 namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
 {
@@ -45,6 +44,7 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
         private readonly IContainerProvider _containerProvider;
 
         public GbXmlViewerViewModel(IGbXmlViewerStateService gbXmlViewerStateService,
+            IProjectsService projectsService,
             IRegionManager regionManager,
             IEventAggregator eventAggregator,
             IDialogService dialogService,
@@ -56,19 +56,22 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
             _dialogService = dialogService;
             _containerProvider = containerProvider;
 
+            Projects = projectsService.Projects;
         }
 
-        // Update the Status Bar Method
-        private void UpdateStatusBarMethod()
-        {
-            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("gbXML 3D Viewer View");
-        }
-        
+
         private ObservableCollection<ProjectsModel> _projects;
         public ObservableCollection<ProjectsModel> Projects
         {
             get { return _projects; }
             set { SetProperty(ref _projects, value); }
+        }
+
+
+        // Method: Update Status Bar
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("App Settings View");
         }
 
         private bool _isActive;
@@ -92,27 +95,75 @@ namespace GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels
             {
                 // Update the Status Bar
                 UpdateStatusBarMethod();
-
-                // Load state when the module becomes active
-                var state = _gbXmlViewerStateService.GetModuleState("GbXmlViewer");
-                if (state != null)
-                {
-                    // Restore the state (e.g. Projects collection)
-                    Projects = state as ObservableCollection<ProjectsModel>;
-                }
-            }
-            else
-            {
-                // Save state when the module becomes inactive
-                _gbXmlViewerStateService.SetModuleState("GbXmlViewer", Projects);
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+        //// Update the Status Bar Method
+        //private void UpdateStatusBarMethod()
+        //{
+        //    _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("gbXML 3D Viewer View");
+        //}
+
+        //private ObservableCollection<ProjectsModel> _projects;
+        //public ObservableCollection<ProjectsModel> Projects
+        //{
+        //    get { return _projects; }
+        //    set { SetProperty(ref _projects, value); }
+        //}
+
+        //private bool _isActive;
+        //public bool IsActive
+        //{
+        //    get { return _isActive; }
+        //    set
+        //    {
+        //        SetProperty(ref _isActive, value);
+        //        OnIsActiveChanged();
+        //    }
+        //}
+
+        //public event EventHandler IsActiveChanged;
+
+        //private void OnIsActiveChanged()
+        //{
+        //    IsActiveChanged?.Invoke(this, EventArgs.Empty);
+
+        //    if (IsActive)
+        //    {
+        //        // Update the Status Bar
+        //        UpdateStatusBarMethod();
+
+        //        // Load state when the module becomes active
+        //        var state = _gbXmlViewerStateService.GetModuleState("GbXmlViewer");
+        //        if (state != null)
+        //        {
+        //            // Restore the state (e.g. Projects collection)
+        //            Projects = state as ObservableCollection<ProjectsModel>;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Save state when the module becomes inactive
+        //        _gbXmlViewerStateService.SetModuleState("GbXmlViewer", Projects);
+        //    }
+        //}
 
 
         // Update the state in the shared service when changes are made
-        public void UpdateProjectState()
-        {
-            _gbXmlViewerStateService.SetModuleState("GbXmlViewer", Projects);
-        }
+        //public void UpdateProjectState()
+        //{
+        //    _gbXmlViewerStateService.SetModuleState("GbXmlViewer", Projects);
+        //}
     }
 }

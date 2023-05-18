@@ -1,6 +1,7 @@
 ﻿using GbXmlDesignSuite.Core;
 using GbXmlDesignSuite.Modules.LoadCalc.ViewModels;
 using GbXmlDesignSuite.Modules.LoadCalc.Views;
+using GbXmlDesignSuite.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -24,6 +25,9 @@ namespace GbXmlDesignSuite.Modules.LoadCalc
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<LoadCalcView, LoadCalcViewModel>();
+
+            // Register Services
+            containerRegistry.Register<IProjectsService, ProjectsService>();
         }
     }
 }

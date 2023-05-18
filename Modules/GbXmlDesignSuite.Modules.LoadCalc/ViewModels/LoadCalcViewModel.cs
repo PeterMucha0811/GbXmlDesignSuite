@@ -1,16 +1,14 @@
-﻿using GbXmlDesignSuite.Core;
-using Prism.Regions;
+﻿using Prism.Regions;
 using Prism.Mvvm;
 using GbXmlDesignSuite.Core.Models;
-using GbXmlDesignSuite.Core.Services;
 using Prism.Events;
 using Prism;
 using System.Collections.ObjectModel;
 using System;
-using GbXmlDesignSuite.Core.Interfaces;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
 using GbXmlDesignSuite.Core.Events;
+using GbXmlDesignSuite.Services;
 
 namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
 {
@@ -23,6 +21,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
         private readonly IContainerProvider _containerProvider;
 
         public LoadCalcViewModel(ILoadCalcStateService loadCalcStateService,
+            IProjectsService projectsService,
             IRegionManager regionManager,
             IEventAggregator eventAggregator,
             IDialogService dialogService,
@@ -33,12 +32,8 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
-        }
 
-        // Update the Status Bar Method
-        private void UpdateStatusBarMethod()
-        {
-            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Load Calculations View");
+            Projects = projectsService.Projects;
         }
 
         private ObservableCollection<ProjectsModel> _projects;
@@ -46,6 +41,12 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
         {
             get { return _projects; }
             set { SetProperty(ref _projects, value); }
+        }
+
+        // Update the Status Bar Method
+        private void UpdateStatusBarMethod()
+        {
+            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Load Calculations View");
         }
 
 
@@ -70,27 +71,7 @@ namespace GbXmlDesignSuite.Modules.LoadCalc.ViewModels
             {
                 // Update the Status Bar
                 UpdateStatusBarMethod();
-
-                // Load state when the module becomes active
-                var state = _loadCalcStateService.GetModuleState("LoadCalc");
-                if (state != null)
-                {
-                    // Restore the state (e.g. Projects collection)
-                    Projects = state as ObservableCollection<ProjectsModel>;
-                }
             }
-            else
-            {
-                // Save state when the module becomes inactive
-                _loadCalcStateService.SetModuleState("LoadCalc", Projects);
-            }
-        }
-
-
-        // Update the state in the shared service when changes are made
-        public void UpdateProjectState()
-        {
-            _loadCalcStateService.SetModuleState("LoadCalc", Projects);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using GbXmlDesignSuite.Core.Interfaces;
-using GbXmlDesignSuite.Core.Services;
-using GbXmlDesignSuite.Modules.AppSettings;
+﻿using GbXmlDesignSuite.Modules.AppSettings;
 using GbXmlDesignSuite.Modules.GbXmlViewer;
 using GbXmlDesignSuite.Modules.LoadCalc;
 using GbXmlDesignSuite.Modules.ProjectMgmt;
@@ -12,6 +10,8 @@ using Prism.Regions;
 using Prism.Unity;
 using System.Windows;
 using GbXmlDesignSuite.Core;
+using GbXmlDesignSuite.Services;
+using GbXmlDesignSuite.Modules.AppHome;
 
 namespace GbXmlDesignSuite.Shell
 {
@@ -26,15 +26,26 @@ namespace GbXmlDesignSuite.Shell
         {
             // //  Register State Services as Singletons  // //
             containerRegistry.RegisterSingleton<IGbXmlViewerStateService, GbXmlViewerStateService>();
+
             containerRegistry.RegisterSingleton<ILoadCalcStateService, LoadCalcStateService>();
+
             containerRegistry.RegisterSingleton<IVentCalcStateService, VentCalcStateService>();
+
             containerRegistry.RegisterSingleton<IAppSettingsStateService, AppSettingsStateService>();
-            containerRegistry.RegisterSingleton<IProjectStateService, ProjectStateService>();
+
+            containerRegistry.RegisterSingleton<IProjectMgmtStateService, ProjectMgmtStateService>();
+
+            containerRegistry.RegisterSingleton<IAppHomeStateService, AppHomeStateService>();
+
+
+            containerRegistry.RegisterSingleton<IProjectsService, ProjectsService>();
+            containerRegistry.RegisterSingleton<IDialogsService, DialogService>();
 
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
+            moduleCatalog.AddModule<AppHomeModule>();
             moduleCatalog.AddModule<GbXmlViewerModule>();
             moduleCatalog.AddModule<LoadCalcModule>();
             moduleCatalog.AddModule<VentCalcModule>();
@@ -48,7 +59,10 @@ namespace GbXmlDesignSuite.Shell
             var regionManager = this.Container.Resolve<IRegionManager>();
             if (regionManager != null)
             {
-                regionManager.RegisterViewWithRegion(RegionNames.LeftDockRegion, typeof(NavigationMenu));
+                //regionManager.RegisterViewWithRegion(RegionNames.LeftDockRegion, typeof(NavigationMenu));
+
+                regionManager.RegisterViewWithRegion(RegionNames.LeftDockRegion, typeof(AppHomeMenu));
+
             }
         }
     }

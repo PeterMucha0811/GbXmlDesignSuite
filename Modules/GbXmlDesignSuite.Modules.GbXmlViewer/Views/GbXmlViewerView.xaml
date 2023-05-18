@@ -12,7 +12,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -32,14 +32,6 @@
         </Border>-->
 
         <localViews:HelixView />
-        
-        
-        
-        
-        
-        
-        
-
 
         <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="auto" MinWidth="200">

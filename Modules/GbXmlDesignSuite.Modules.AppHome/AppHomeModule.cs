@@ -1,30 +1,30 @@
 ﻿using Prism.Modularity;
 using Prism.Ioc;
-using GbXmlDesignSuite.Modules.AppSettings.Views;
+using GbXmlDesignSuite.Modules.AppHome.Views;
 using GbXmlDesignSuite.Core;
 using Prism.Regions;
-using GbXmlDesignSuite.Modules.AppSettings.ViewModels;
+using GbXmlDesignSuite.Modules.AppHome.ViewModels;
 using GbXmlDesignSuite.Services;
 
-namespace GbXmlDesignSuite.Modules.AppSettings
+namespace GbXmlDesignSuite.Modules.AppHome
 {
-    public class AppSettingsModule : IModule
+    public class AppHomeModule : IModule
     {
         private readonly IRegionManager _regionManager;
 
-        public AppSettingsModule(IRegionManager regionManager)
+        public AppHomeModule(IRegionManager regionManager)
         {
             _regionManager = regionManager;
         }
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RequestNavigate(RegionNames.ContentRegion, "AppSettingsView");
+            _regionManager.RequestNavigate(RegionNames.ContentRegion, "AppHomeView");
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<AppSettingsView, AppSettingsViewModel>();
+            containerRegistry.RegisterForNavigation<AppHomeView, AppHomeViewModel>();
 
             // Register Services
             containerRegistry.Register<IProjectsService, ProjectsService>();

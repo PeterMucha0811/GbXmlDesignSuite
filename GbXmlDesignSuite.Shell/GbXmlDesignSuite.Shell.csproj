@@ -72,12 +72,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AppHomeMenuViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\NavigationMenuViewModel.cs" />
+    <Compile Include="Views\AppHomeMenu.xaml.cs">
+      <DependentUpon>AppHomeMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +127,10 @@
     <Page Include="Resources\Styles\TextBoxStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AppHomeMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -182,6 +190,14 @@
     <ProjectReference Include="..\GbXmlDesignSuite.Core\GbXmlDesignSuite.Core.csproj">
       <Project>{5f87e912-34d7-41a5-90e4-80001fa0da54}</Project>
       <Name>GbXmlDesignSuite.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GbXmlDesignSuite.Services\GbXmlDesignSuite.Services.csproj">
+      <Project>{A5779BBF-2098-4C70-96ED-2CE2786839B6}</Project>
+      <Name>GbXmlDesignSuite.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\GbXmlDesignSuite.Modules.AppHome\GbXmlDesignSuite.Modules.AppHome.csproj">
+      <Project>{f2ec23d7-71f4-418e-ad0c-1fad9fd15272}</Project>
+      <Name>GbXmlDesignSuite.Modules.AppHome</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modules\GbXmlDesignSuite.Modules.AppSettings\GbXmlDesignSuite.Modules.AppSettings.csproj">
       <Project>{16F491FB-8143-49F2-95BE-93D8106C82AE}</Project>

@@ -1,43 +1,41 @@
-﻿using Prism.Regions;
-using Prism.Mvvm;
-using Prism.Events;
+﻿using GbXmlDesignSuite.Core.Interfaces;
+using GbXmlDesignSuite.Core.Models;
+using GbXmlDesignSuite.Core.Services;
 using Prism;
-using System;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Ioc;
+using Prism.Mvvm;
+using Prism.Regions;
 using Prism.Services.Dialogs;
-using GbXmlDesignSuite.Core.Events;
-using GbXmlDesignSuite.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
-
-namespace GbXmlDesignSuite.Modules.VentCalc.ViewModels
+namespace GbXmlDesignSuite.Modules.AppHome.ViewModels
 {
-    public class VentCalcViewModel : BindableBase, IActiveAware
+    public class HomeMenuViewModel : BindableBase, IActiveAware
     {
-        private readonly IVentCalcStateService _ventCalcStateService;
         private readonly IRegionManager _regionManager;
         private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
-        public VentCalcViewModel(IVentCalcStateService ventCalcStateService,
-            IProjectsService projectsService,
-            IRegionManager regionManager,
+        public HomeMenuViewModel(IRegionManager regionManager,
             IEventAggregator eventAggregator,
             IDialogService dialogService,
             IContainerProvider containerProvider)
         {
-            _ventCalcStateService = ventCalcStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
         }
 
-        // Update the Status Bar Method
-        private void UpdateStatusBarMethod()
-        {
-            _eventAggregator.GetEvent<StatusBarUpdateEvent>().Publish("Ventilation Calculations View");
-        }
+
+
+
 
 
 
@@ -52,6 +50,7 @@ namespace GbXmlDesignSuite.Modules.VentCalc.ViewModels
             }
         }
 
+
         public event EventHandler IsActiveChanged;
 
         private void OnIsActiveChanged()
@@ -60,8 +59,11 @@ namespace GbXmlDesignSuite.Modules.VentCalc.ViewModels
 
             if (IsActive)
             {
-                // Update the Status Bar
-                UpdateStatusBarMethod();
+                // Stuff..
+            }
+            else
+            {
+                // Stuff..
             }
         }
     }

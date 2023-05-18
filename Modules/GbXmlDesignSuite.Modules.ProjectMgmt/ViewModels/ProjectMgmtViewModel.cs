@@ -8,47 +8,52 @@ using System.Threading.Tasks;
 using GbXmlDesignSuite.Core.Models;
 using System.Windows.Media.Effects;
 using System.Windows;
-using GbXmlDesignSuite.Core.Interfaces;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
 using Prism;
 using GbXmlDesignSuite.Modules.ProjectMgmt.Views.Dialogs;
 using GbXmlDesignSuite.Core.Events;
+using GbXmlDesignSuite.Services;
 
 namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 {
     public class ProjectMgmtViewModel : BindableBase, IActiveAware
     {
-        private readonly IProjectStateService _projectStateService;
+        private readonly IProjectMgmtStateService _projectMgmtStateService;
         private readonly IRegionManager _regionManager;
         private IEventAggregator _eventAggregator;
         private IDialogService _dialogService;
         private readonly IContainerProvider _containerProvider;
 
-        public ProjectMgmtViewModel(IProjectStateService projectStateService,
+        public ProjectMgmtViewModel(IProjectMgmtStateService projectStateService,
+            IProjectsService projectsService,
             IRegionManager regionManager,
             IEventAggregator eventAggregator,
             IDialogService dialogService,
             IContainerProvider containerProvider)
         {
-            _projectStateService = projectStateService;
+            _projectMgmtStateService = projectStateService;
             _regionManager = regionManager;
             _eventAggregator = eventAggregator;
             _dialogService = dialogService;
             _containerProvider = containerProvider;
 
+            Projects = projectsService.Projects;
+
 
             AddEmployeeCommand = new DelegateCommand(async () => await AddEmployeeAsync());
 
 
-            // // TESTING ONLY // //
-            if (Projects == null)
-            {
-                Projects = new ObservableCollection<ProjectsModel>();
 
-                TestingData();
-            }
         }
+
+        private ObservableCollection<ProjectsModel> _projects;
+        public ObservableCollection<ProjectsModel> Projects
+        {
+            get { return _projects; }
+            set { SetProperty(ref _projects, value); }
+        }
+
 
 
         // Update the Status Bar Method
@@ -170,12 +175,6 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
 
         }
 
-        private ObservableCollection<ProjectsModel> _projects;
-        public ObservableCollection<ProjectsModel> Projects
-        {
-            get { return _projects; }
-            set { SetProperty(ref _projects, value); }
-        }
 
         private bool _isActive;
         public bool IsActive
@@ -199,101 +198,28 @@ namespace GbXmlDesignSuite.Modules.ProjectMgmt.ViewModels
                 // Update the Status Bar
                 UpdateStatusBarMethod();
 
-                // Load state when the module becomes active
-                var state = _projectStateService.GetModuleState("ProjectMgmt");
-                if (state != null)
-                {
-                    // Restore the state (e.g. Projects collection)
-                    Projects = state as ObservableCollection<ProjectsModel>;
-                }
+                //// Load state when the module becomes active
+                //var state = _projectMgmtStateService.GetModuleState("ProjectMgmt");
+                //if (state != null)
+                //{
+                //    // Restore the state (e.g. Projects collection)
+                //    Projects = state as ObservableCollection<ProjectsModel>;
+                //}
             }
             else
             {
                 // Save state when the module becomes inactive
-                _projectStateService.SetModuleState("ProjectMgmt", Projects);
+                //_projectMgmtStateService.SetModuleState("ProjectMgmt", Projects);
             }
         }
 
-        // Update the state in the shared service when changes are made
-        public void UpdateProjectState()
-        {
-            _projectStateService.SetModuleState("ProjectMgmt", Projects);
-        }
-
-        // // TESTING ONLY // //
-        private void TestingData()
-        {
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 1",
-                ProjectNumber = "00001",
-                ProjectDescription = "This is a 1st test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 2",
-                ProjectNumber = "00002",
-                ProjectDescription = "This is a 2nd test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 3",
-                ProjectNumber = "00003",
-                ProjectDescription = "This is a 3rd test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 4",
-                ProjectNumber = "00004",
-                ProjectDescription = "This is a 4th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 5",
-                ProjectNumber = "00005",
-                ProjectDescription = "This is a 5th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 6",
-                ProjectNumber = "00006",
-                ProjectDescription = "This is a 6th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 7",
-                ProjectNumber = "00007",
-                ProjectDescription = "This is a 7th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 8",
-                ProjectNumber = "00008",
-                ProjectDescription = "This is a 8th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 9",
-                ProjectNumber = "00009",
-                ProjectDescription = "This is a 9th test project"
-            });
-
-            Projects.Add(new ProjectsModel
-            {
-                ProjectName = "Project 10",
-                ProjectNumber = "00010",
-                ProjectDescription = "This is a 10th test project"
-            });
+        //// Update the state in the shared service when changes are made
+        //public void UpdateProjectState()
+        //{
+        //    _projectMgmtStateService.SetModuleState("ProjectMgmt", Projects);
+        //}
 
 
-        }
+        
     }
 }

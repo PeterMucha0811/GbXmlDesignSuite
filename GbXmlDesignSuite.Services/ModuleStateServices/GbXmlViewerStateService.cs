@@ -1,13 +1,19 @@
-﻿using GbXmlDesignSuite.Core.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace GbXmlDesignSuite.Core.Services
+namespace GbXmlDesignSuite.Services
 {
-    public class AppSettingsStateService : IAppSettingsStateService
+    public interface IGbXmlViewerStateService
+    {
+        void SetModuleState(string moduleName, object state);
+        object GetModuleState(string moduleName);
+    }
+
+
+    public class GbXmlViewerStateService : IGbXmlViewerStateService
     {
         private Dictionary<string, object> _moduleStates;
 
-        public AppSettingsStateService()
+        public GbXmlViewerStateService()
         {
             _moduleStates = new Dictionary<string, object>();
         }

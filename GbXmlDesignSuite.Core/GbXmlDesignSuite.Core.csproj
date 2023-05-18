@@ -65,20 +65,8 @@
     <Compile Include="Constants\ServiceNames.cs" />
     <Compile Include="Events\AppProjectChangedEvent.cs" />
     <Compile Include="Events\StatusBarUpdateEvent.cs" />
-    <Compile Include="Interfaces\ModuleStates\IAppSettingsStateService.cs" />
-    <Compile Include="Interfaces\ModuleStates\IGbXmlViewerStateService.cs" />
-    <Compile Include="Interfaces\ModuleStates\ILoadCalcStateService.cs" />
-    <Compile Include="Interfaces\ModuleStates\IProjectStateService.cs" />
-    <Compile Include="Interfaces\ModuleStates\IVentCalcStateService.cs" />
     <Compile Include="Models\ProjectsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ModuleStates\AppSettingsStateService.cs" />
-    <Compile Include="Services\ModuleStates\GbXmlViewerStateService.cs" />
-    <Compile Include="Services\ModuleStates\LoadCalcStateService.cs" />
-    <Compile Include="Services\MessageServices\MessageDisplayService.cs" />
-    <Compile Include="Services\MessageServices\MessageService.cs" />
-    <Compile Include="Services\ModuleStates\ProjectStateService.cs" />
-    <Compile Include="Services\ModuleStates\VentCalcStateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

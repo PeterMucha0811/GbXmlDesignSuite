@@ -1,6 +1,7 @@
 ﻿using GbXmlDesignSuite.Core;
 using GbXmlDesignSuite.Modules.VentCalc.ViewModels;
 using GbXmlDesignSuite.Modules.VentCalc.Views;
+using GbXmlDesignSuite.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -23,6 +24,9 @@ namespace GbXmlDesignSuite.Modules.VentCalc
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<VentCalcView, VentCalcViewModel>();
+
+            // Register Services
+            containerRegistry.Register<IProjectsService, ProjectsService>();
         }
     }
 }
