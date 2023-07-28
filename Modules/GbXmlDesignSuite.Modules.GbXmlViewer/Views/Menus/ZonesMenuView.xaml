@@ -1,11 +1,10 @@
-﻿<UserControl x:Class="GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus.ZonesMenuView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True">
+﻿<UserControl
+    x:Class="GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus.ZonesMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Expander Header="HVAC Zones" Foreground="White">
-
-        </Expander>
+        <Expander Foreground="White" Header="HVAC Zones" />
     </Grid>
 </UserControl>

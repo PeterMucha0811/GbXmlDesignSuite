@@ -1,212 +1,605 @@
-﻿<UserControl x:Class="GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus.AttributesMenuView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:menus="clr-namespace:GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             Width="Auto">
+﻿<UserControl
+    x:Class="GbXmlDesignSuite.Modules.GbXmlViewer.Views.Menus.AttributesMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:menus="clr-namespace:GbXmlDesignSuite.Modules.GbXmlViewer.ViewModels.Menus"
+    xmlns:prism="http://prismlibrary.com/"
+    Width="Auto"
+    prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Grid>
-        <Expander Header="Attributes/Nodes" Foreground="White" >
-            <StackPanel VerticalAlignment="Top" Margin="15,0,0,0">
-                <Expander Header="Campus Attributes" Foreground="White">
+        <Expander Foreground="White" Header="Attributes/Nodes">
+            <StackPanel Margin="15,0,0,0" VerticalAlignment="Top">
+                <Expander Foreground="White" Header="Campus Attributes">
 
                     <Grid Margin="5,0,5,15">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Xmlns:" Foreground="{StaticResource menuTextColor}" Style="{ StaticResource ExpanderTextBlock}"/>
-                        <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Xmlns}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Style="{StaticResource ExpanderTextBlock}"
+                            Text="Xmlns:" />
+                        <GridSplitter
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Xmlns}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Use SI Units for Results:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="1" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding UseSIUnitsForResults}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Use SI Units for Results:" />
+                        <GridSplitter
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding UseSIUnitsForResults}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Temperature Unit:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="2" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C"  />
-                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding TemperatureUnit}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Temperature Unit:" />
+                        <GridSplitter
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding TemperatureUnit}" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Length Unit:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="3" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding LengthUnit}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Length Unit:" />
+                        <GridSplitter
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding LengthUnit}" />
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Area Unit:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="4" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding AreaUnit}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Area Unit:" />
+                        <GridSplitter
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding AreaUnit}" />
 
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Volume Unit:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="5" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding VolumeUnit}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Volume Unit:" />
+                        <GridSplitter
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding VolumeUnit}" />
 
-                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Version:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="6" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Version}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Version:" />
+                        <GridSplitter
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Version}" />
                     </Grid>
 
                 </Expander>
 
-                <Expander Header="Location Attributes" Foreground="White">
+                <Expander Foreground="White" Header="Location Attributes">
 
                     <Grid Margin="5,0,5,15">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Station Id:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding StationId}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Station Id:" />
+                        <GridSplitter
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding StationId}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Zipcode or Postal Code:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="1" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding ZipcodeOrPostalCode}" Background="Transparent"  />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Zipcode or Postal Code:" />
+                        <GridSplitter
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Text="{Binding ZipcodeOrPostalCode}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Longitude:" Foreground="{StaticResource menuTextColor}"/>
-                        <GridSplitter Grid.Row="2" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Longitude}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Longitude:" />
+                        <GridSplitter
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Longitude}" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Latitude:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="3" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Latitude}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Latitude:" />
+                        <GridSplitter
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Latitude}" />
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Elevation:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="4" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Elevation}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Elevation:" />
+                        <GridSplitter
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Elevation}" />
 
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="CAD Model Azimuth:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="5" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding CADModelAzimuth}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="CAD Model Azimuth:" />
+                        <GridSplitter
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding CADModelAzimuth}" />
 
 
                     </Grid>
 
                 </Expander>
 
-                <Expander Header="Building Attributes" Foreground="White">
+                <Expander Foreground="White" Header="Building Attributes">
 
                     <Grid Margin="5,0,5,15">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Building Type:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding BuildingType}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Building Type:" />
+                        <GridSplitter
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding BuildingType}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Building Id:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="1" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding BuildingId}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Building Id:" />
+                        <GridSplitter
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding BuildingId}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Street Address:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="2" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding StreetAddress}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Street Address:" />
+                        <GridSplitter
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding StreetAddress}" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Area:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="3" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Area}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Area:" />
+                        <GridSplitter
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Area}" />
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Name:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="4" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Name}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Name:" />
+                        <GridSplitter
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Name}" />
 
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Description:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="5" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Description}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Description:" />
+                        <GridSplitter
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Description}" />
 
 
                     </Grid>
 
                 </Expander>
 
-                <Expander Header="gbXML Statistics" Foreground="White">
+                <Expander Foreground="White" Header="gbXML Statistics">
 
                     <Grid Margin="5,0,5,15">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Surfaces:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="0" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Surfaces}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Surfaces:" />
+                        <GridSplitter
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Surfaces}" />
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Spaces:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="1" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Spaces}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Spaces:" />
+                        <GridSplitter
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Spaces}" />
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Storeys:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="2" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Storeys}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Storeys:" />
+                        <GridSplitter
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Storeys}" />
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Zones:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="3" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Zones}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Zones:" />
+                        <GridSplitter
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Zones}" />
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Openings:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="4" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Openings}" Background="Transparent" Foreground="White" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Openings:" />
+                        <GridSplitter
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Openings}" />
 
-                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Constructions:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="5" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Constructions}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Constructions:" />
+                        <GridSplitter
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Constructions}" />
 
-                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Materials:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="6" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Materials}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Materials:" />
+                        <GridSplitter
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="6"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Materials}" />
 
-                        <TextBlock Grid.Row="7" Grid.Column="0" Text="Layers:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="7" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="7" Grid.Column="2" Text="{Binding Layers}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Layers:" />
+                        <GridSplitter
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="7"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding Layers}" />
 
-                        <TextBlock Grid.Row="8" Grid.Column="0" Text="Window Types:" Foreground="{StaticResource menuTextColor}" />
-                        <GridSplitter Grid.Row="8" Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="#FF5E5C5C" />
-                        <TextBlock Grid.Row="8" Grid.Column="2" Text="{Binding WindowTypes}" Background="Transparent" Foreground="White"  />
+                        <TextBlock
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Foreground="{StaticResource menuTextColor}"
+                            Text="Window Types:" />
+                        <GridSplitter
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Width="2"
+                            HorizontalAlignment="Stretch"
+                            Background="#FF5E5C5C" />
+                        <TextBlock
+                            Grid.Row="8"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            Foreground="White"
+                            Text="{Binding WindowTypes}" />
                     </Grid>
 
                 </Expander>
